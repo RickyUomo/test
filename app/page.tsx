@@ -3,9 +3,9 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {/* remove-block-start */}
+      {/* devblock:start */}
       <h1>Do not show on production</h1>
-      {/* remove-block-end */}
+      {/* devblock:end */}
     </main>
   );
 }
