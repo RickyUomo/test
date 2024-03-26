@@ -2,13 +2,24 @@
 import path from "path";
 
 const nextConfig = {
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
+    // Add the loader configuration for JavaScript files
     config.module.rules.push({
       test: /\.(js|jsx|ts|tsx)$/,
-      include: [path.resolve(process.cwd(), "app")],
+      exclude: /node_modules/,
       use: [
+        // Use the webpack-remove-block-loader
         {
           loader: "webpack-remove-block-loader",
+          options: {
+            blocks: [
+              // Specify the comment blocks to be removed
+              {
+                start: "/* remove-block-start */",
+                end: "/* remove-block-end */",
+              },
+            ],
+          },
         },
       ],
     });
